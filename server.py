@@ -1,3 +1,4 @@
+"""Flask server for emotion detection."""
 from flask import Flask, request
 from EmotionDetection import emotion_detector
 
@@ -5,6 +6,7 @@ app = Flask(__name__)
 
 @app.route("/emotionDetector")
 def emotion_detector_endpoint():
+    """Return emotion analysis for the supplied text."""
     text_to_analyse = request.args.get("text")
     result = emotion_detector(text_to_analyse)
     if result['dominant_emotion'] is None:
